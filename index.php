@@ -1,4 +1,4 @@
-    <?php   #Me quedé en el video 137 proximo video a ver 138# ?>
+    <?php   #Me quedé en el video 152 proximo video a ver 153# ?>
 
 <?php
 
@@ -21,7 +21,22 @@
         <?php require_once "./app/views/inc/head.php" ?>
     </head>
     <body>
-            <?php require_once "./app/views/inc/scrpit.php" ?>
+            <?php 
+                    use app\controllers\viewsController;
+
+                    $viewsController = new viewsController();
+
+                    $vista = $viewsController->obtenerVistasControlador($url[0]);
+
+                    if($vista=="login"|| $vista=="404"){
+                            require_once "./app/views/content/".$vista."-view.php";
+                    }else{
+                            require_once "./app/views/inc/navbar.php";
+                            require_once $vista;
+                    }
+                    
+                    require_once "./app/views/inc/scrpit.php" 
+            ?>
 
 
     </body>
